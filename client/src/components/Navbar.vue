@@ -27,18 +27,10 @@
       @click="isActive = !isActive"
     >
       <div class="navbar-start">
-        <router-link to="/" class="navbar-item">Home</router-link>
-        <router-link to="/about" class="navbar-item">About</router-link>
-        <router-link to="/history" class="navbar-item"
-          >Exercise History</router-link
-        >
-        <router-link to="/add" class="navbar-item">Add Exercise</router-link>
-        <router-link to="/manageUsers" class="navbar-item"
-          >Manage Users</router-link
-        >
-        <router-link to="/manageExercises" class="navbar-item"
-          >Manage Exercises</router-link
-        >
+        <router-link to="/" class="navbar-item"> Home </router-link>
+        <router-link to="/about" class="navbar-item"> About </router-link>
+        <router-link to="/myHome" class="navbar-item"> My Home </router-link>
+        <router-link to="/admin" class="navbar-item has-background-danger"> Admin </router-link>
 
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> More </a>

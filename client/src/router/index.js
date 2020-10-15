@@ -24,25 +24,15 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
   },
   {
-    path: '/history',
-    name: 'Exercise History',
-    component: () => import(/* webpackChunkName: "about" */ '../views/ExerciseHistory.vue')
+    path: '/myHome',
+    name: 'My Home',
+    component: () => import(/* webpackChunkName: "about" */ '../views/MyHome.vue')
   },
   {
-    path: '/add',
-    name: 'Add Exercise',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AddExercise.vue')
+    path: '/admin',
+    name: 'Admin Page',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Admin.vue')
   },
-  {
-    path: '/manageExercises',
-    name: 'Manage Exercises',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AdminManageExercises.vue')
-  },
-  {
-    path: '/manageUsers',
-    name: 'Manage Users',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AdminManageUsers.vue')
-  }
 ]
 
 const router = new VueRouter({
