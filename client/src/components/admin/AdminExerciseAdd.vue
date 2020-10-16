@@ -19,10 +19,9 @@
       <label class="label">Exercise Type</label>
       <div class="select">
         <select>
-          <option>Time</option>
-          <option>Time, Distance</option>
-          <option>Sets, Reps </option>
-          <option>Sets, Reps, Weight </option>
+          <option v-for="dataType in workoutDataTypes" :key="dataType">
+            {{ dataType }}
+          </option>
         </select>
       </div>
     </div>
@@ -30,7 +29,13 @@
 </template>
 
 <script>
-export default {};
+import { workoutDataTypes } from "@/models/workouts.js";
+
+export default {
+  data: () => ({
+    workoutDataTypes,
+  }),
+};
 </script>
 
 <style>

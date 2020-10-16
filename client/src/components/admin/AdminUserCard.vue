@@ -2,7 +2,14 @@
   <div class="box has-background-dark has-text-white">
     <div class="columns is-centered">
       <div class="column is-3">
-        <span class="has-text-weight-medium is-size-5">User Name</span>
+        <span class="has-text-weight-medium is-size-5">{{ username }}</span>
+        <br />
+        <span
+          v-if="isAdmin"
+          class="has-text-weight-medium has-text-warning is-size-5"
+        >
+          Admin
+        </span>
       </div>
 
       <div class="column is-6">
@@ -40,11 +47,15 @@
       <div class="modal-background" @click="isViewingUser = false"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Viewing User</p>
-          <button class="delete" aria-label="close" @click="isViewingUser = false"></button>
+          <p class="modal-card-title">Viewing {{ username }}</p>
+          <button
+            class="delete"
+            aria-label="close"
+            @click="isViewingUser = false"
+          ></button>
         </header>
         <section class="modal-card-body">
-          <AdminUserView />
+          <AdminUserView v-bind:workouts="workouts" />
         </section>
         <footer class="modal-card-foot">
           <button class="button" @click="isViewingUser = false">Close</button>
@@ -56,8 +67,12 @@
       <div class="modal-background" @click="isEditingUser = false"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Editing User</p>
-          <button class="delete" aria-label="close" @click="isEditingUser = false"></button>
+          <p class="modal-card-title">Editing {{ username }}</p>
+          <button
+            class="delete"
+            aria-label="close"
+            @click="isEditingUser = false"
+          ></button>
         </header>
         <section class="modal-card-body">
           <AdminUserEdit />
@@ -73,8 +88,12 @@
       <div class="modal-background" @click="isDeletingUser = false"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Deleting User</p>
-          <button class="delete" aria-label="close" @click="isDeletingUser = false"></button>
+          <p class="modal-card-title">Deleting {{ username }}</p>
+          <button
+            class="delete"
+            aria-label="close"
+            @click="isDeletingUser = false"
+          ></button>
         </header>
         <section class="modal-card-body">
           <AdminUserDelete />
@@ -85,7 +104,6 @@
         </footer>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -104,6 +122,11 @@ export default {
     AdminUserView,
     AdminUserEdit,
     AdminUserDelete,
+  },
+  props: {
+    username: Object,
+    isAdmin: Boolean,
+    workouts: Object,
   },
 };
 </script>

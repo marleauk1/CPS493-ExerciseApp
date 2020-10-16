@@ -8,7 +8,14 @@
         <span>Add Exercise</span>
       </button>
     </div>
-    <AdminExerciseCard /> <AdminExerciseCard /> <AdminExerciseCard />
+
+    <AdminExerciseCard
+      v-for="(x, i) in workoutTypes"
+      :key="i"
+      :workoutType="x"
+      v-bind:name="x.name"
+      v-bind:type="x.type"
+    />
 
     <!-- Add Exercise Modal -->
     <div class="modal" :class="{ 'is-active': isAddingExercise }">
@@ -27,7 +34,9 @@
         </section>
         <footer class="modal-card-foot">
           <button class="button is-success">Add Exercise</button>
-          <button class="button" @click="isAddingExercise = false">Cancel</button>
+          <button class="button" @click="isAddingExercise = false">
+            Cancel
+          </button>
         </footer>
       </div>
     </div>
@@ -38,9 +47,12 @@
 import AdminExerciseCard from "@/components/admin/AdminExerciseCard.vue";
 import AdminExerciseAdd from "@/components/admin/AdminExerciseAdd.vue";
 
+import { workoutTypes } from "@/models/workouts.js";
+
 export default {
   data: () => ({
     isAddingExercise: false,
+    workoutTypes,
   }),
   components: {
     AdminExerciseCard,

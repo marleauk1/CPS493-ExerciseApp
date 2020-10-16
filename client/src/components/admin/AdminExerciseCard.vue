@@ -2,8 +2,13 @@
   <div class="box has-background-dark has-text-white">
     <div class="columns is-centered">
       <div class="column is-3">
-        <span class="has-text-weight-medium is-size-5">Exercise Name</span> <br>
-        <span class="has-text-weight-medium is-size-5">Exercise Type</span>
+        <span id="name" class="has-text-weight-medium is-size-5">{{
+          name
+        }}</span>
+        <br />
+        <span id="type" class="has-text-weight-medium is-size-5">{{
+          type
+        }}</span>
       </div>
 
       <div class="column is-6">
@@ -34,15 +39,21 @@
       <div class="modal-background" @click="isEditingExercise = false"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Editing Exercise</p>
-          <button class="delete" aria-label="close" @click="isEditingExercise = false"></button>
+          <p class="modal-card-title">Editing {{ name }}</p>
+          <button
+            class="delete"
+            aria-label="close"
+            @click="isEditingExercise = false"
+          ></button>
         </header>
         <section class="modal-card-body">
           <AdminExerciseEdit />
         </section>
         <footer class="modal-card-foot">
           <button class="button is-success">Save Changes</button>
-          <button class="button" @click="isEditingExercise = false">Cancel</button>
+          <button class="button" @click="isEditingExercise = false">
+            Cancel
+          </button>
         </footer>
       </div>
     </div>
@@ -51,19 +62,24 @@
       <div class="modal-background" @click="isDeletingExercise = false"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Deleting Exercise</p>
-          <button class="delete" aria-label="close" @click="isDeletingExercise = false"></button>
+          <p class="modal-card-title">Deleting {{ name }}</p>
+          <button
+            class="delete"
+            aria-label="close"
+            @click="isDeletingExercise = false"
+          ></button>
         </header>
         <section class="modal-card-body">
           <AdminExerciseDelete />
         </section>
         <footer class="modal-card-foot">
           <button class="button is-danger">Delete Exercise</button>
-          <button class="button" @click="isDeletingExercise = false">Cancel</button>
+          <button class="button" @click="isDeletingExercise = false">
+            Cancel
+          </button>
         </footer>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -79,6 +95,10 @@ export default {
   components: {
     AdminExerciseEdit,
     AdminExerciseDelete,
+  },
+  props: {
+    name: Object,
+    type: Number,
   },
 };
 </script>

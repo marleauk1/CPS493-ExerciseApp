@@ -30,8 +30,11 @@
         <router-link to="/" class="navbar-item"> Home </router-link>
         <router-link to="/about" class="navbar-item"> About </router-link>
         <router-link to="/myHome" class="navbar-item"> My Home </router-link>
-        <router-link to="/admin" class="navbar-item has-background-danger"> Admin </router-link>
+        <router-link to="/admin" class="navbar-item has-background-danger">
+          Admin
+        </router-link>
 
+        <!--
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> More </a>
 
@@ -43,6 +46,7 @@
             <a class="navbar-item"> Report an issue </a>
           </div>
         </div>
+        -->
       </div>
 
       <div class="navbar-end">

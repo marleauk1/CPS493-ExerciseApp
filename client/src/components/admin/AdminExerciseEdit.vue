@@ -6,7 +6,7 @@
         <input
           class="input is-danger"
           type="text"
-          placeholder="Enter exercise name"
+          placeholder="Enter new exercise name"
         />
         <span class="icon is-small is-left">
           <i class="fas fa-edit"></i>
@@ -19,10 +19,9 @@
       <label class="label">Change Exercise Type</label>
       <div class="select">
         <select>
-          <option>Time</option>
-          <option>Time, Distance</option>
-          <option>Sets, Reps </option>
-          <option>Sets, Reps, Weight </option>
+          <option v-for="dataType in workoutDataTypes" :key="dataType">
+            {{ dataType }}
+          </option>
         </select>
       </div>
     </div>
@@ -30,7 +29,13 @@
 </template>
 
 <script>
-export default {};
+import { workoutDataTypes } from "@/models/workouts.js";
+
+export default {
+  data: () => ({
+    workoutDataTypes,
+  }),
+};
 </script>
 
 <style>

@@ -8,7 +8,15 @@
         <span>Add User</span>
       </button>
     </div>
-    <AdminUserCard /> <AdminUserCard /> <AdminUserCard />
+
+    <AdminUserCard
+      v-for="(x, i) in users"
+      :key="i"
+      :user="x"
+      v-bind:username="x.username"
+      v-bind:isAdmin="x.isAdmin"
+      v-bind:workouts="x.workouts"
+    />
 
     <!-- Add User Modal -->
     <div class="modal" :class="{ 'is-active': isAddingUser }">
@@ -16,7 +24,11 @@
       <div class="modal-card">
         <header class="modal-card-head">
           <p class="modal-card-title">Adding User</p>
-          <button class="delete" aria-label="close" @click="isAddingUser = false"></button>
+          <button
+            class="delete"
+            aria-label="close"
+            @click="isAddingUser = false"
+          ></button>
         </header>
         <section class="modal-card-body">
           <AdminUserAdd />
@@ -34,9 +46,12 @@
 import AdminUserCard from "@/components/admin/AdminUserCard.vue";
 import AdminUserAdd from "@/components/admin/AdminUserAdd.vue";
 
+import { users } from "@/models/users.js"
+
 export default {
   data: () => ({
     isAddingUser: false,
+    users
   }),
   components: {
     AdminUserCard,

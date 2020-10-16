@@ -1,20 +1,25 @@
 <template>
   <article class="message">
     <div class="message-header">
-      <p>Exercise Date</p>
+      <p>{{ date }}</p>
     </div>
     <div class="message-body">
       <div class="columns">
-        <div class="column">Exercise Type</div>
-        <div class="column">Exercise Time</div>
+        <div class="column">{{ type }}</div>
+        <div class="column">{{ time }}</div>
       </div>
-      <div class="box">Exercise Notes</div>
     </div>
   </article>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    date: Object,
+    type: Object,
+    time: Object,
+  }
+};
 </script>
 
 <style>
