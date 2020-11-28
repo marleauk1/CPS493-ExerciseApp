@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `Users` (
   `FirstName` VARCHAR(45) NOT NULL,
   `LastName` VARCHAR(45) NOT NULL,
   `DOB` DATETIME NULL,
-  `Password` VARCHAR(45) NULL,
+  `Password` VARCHAR(90) NULL,
   `User_Type` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Users_Types1_idx` (`User_Type` ASC) ,
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `ContactMethods` (
   CONSTRAINT `fk_ContactMethods_Users`
     FOREIGN KEY (`User_id`)
     REFERENCES `Users` (`id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_ContactMethod_Type`
     FOREIGN KEY (`Type`)

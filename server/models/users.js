@@ -51,7 +51,7 @@ async function register(FirstName, LastName, DOB, Password, User_Type, email) {
         throw { status: 409, message: "An account already exists with this email. Please go to log in." }
     }
     const hash = await bcrypt.hash(Password, SALT_ROUNDS);
-    const res = await add(FirstName, LastName, DOB, Password, User_Type);
+    const res = await add(FirstName, LastName, DOB, hash, User_Type);
     const emailRes = await cm.add(cm.Types.EMAIL, email, true, true, res.insertId);
     const user = await get(res.insertId);
     return user;
