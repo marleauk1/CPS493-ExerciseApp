@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 require('dotenv').config();
 
+const users = require('./controllers/users');
+
 // Middleware
 const app = express()
 const port = process.env.PORT || 3000;
@@ -29,6 +31,8 @@ app.use(function (req, res, next) {
 app.get('/', (req, res) => {
   res.send('Hello World! You requested ' + req.url)
 })
+
+app.use('/users', users);
 
 app.use((err, req, res, next) => {
   console.log(err);
