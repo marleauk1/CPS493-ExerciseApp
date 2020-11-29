@@ -10,12 +10,15 @@
     </div>
 
     <AdminUserCard
-      v-for="(x, i) in users"
+      v-for="(x, i) in list"
       :key="i"
       :user="x"
-      v-bind:username="x.username"
-      v-bind:isAdmin="x.isAdmin"
-      v-bind:workouts="x.workouts"
+      v-bind:id="x.id"
+      v-bind:FirstName="x.FirstName"
+      v-bind:LastName="x.LastName"
+      v-bind:DOB="x.DOB"
+      v-bind:PrimaryEmail="x.PrimaryEmail"
+      v-bind:User_Type="x.User_Type"
     />
 
     <!-- Add User Modal -->
@@ -46,13 +49,16 @@
 import AdminUserCard from "@/components/admin/AdminUserCard.vue";
 import AdminUserAdd from "@/components/admin/AdminUserAdd.vue";
 
-import { users } from "@/models/users.js"
+import { getList } from "@/models/users.js"
 
 export default {
   data: () => ({
     isAddingUser: false,
-    users
+    list: []
   }),
+  async created(){
+      this.list = await getList(); 
+  },
   components: {
     AdminUserCard,
     AdminUserAdd,

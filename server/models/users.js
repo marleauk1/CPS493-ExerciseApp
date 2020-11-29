@@ -7,7 +7,11 @@ const Types = { ADMIN: 8, USER: 9 };
 
 async function getAll(){
     console.log("Called getAll")
-    return await mysql.query(`SELECT * FROM Users`);
+    const sql = `SELECT
+    *,
+    (SELECT Value FROM ContactMethods WHERE User_id = Users.id AND Type='${cm.Types.EMAIL}' AND IsPrimary = true) as PrimaryEmail
+    FROM Users`;
+    return await mysql.query(sql);
 }
 
 async function get(id){

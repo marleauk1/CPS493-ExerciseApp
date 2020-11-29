@@ -2,24 +2,31 @@
   <div class="box has-background-dark has-text-white">
     <div class="columns is-centered">
       <div class="column is-3">
-        <span class="has-text-weight-medium is-size-5">{{ username }}</span>
+        <span class="has-text-weight-medium is-size-5">{{ id }}</span> <br />
+        <span class="has-text-weight-medium is-size-5">{{ FirstName }}</span> <br />
+        <span class="has-text-weight-medium is-size-5"> {{ LastName }} </span> <br />
+        <span class="has-text-weight-medium is-size-5"> {{ DOB }} </span> <br />
+        <span class="has-text-weight-medium is-size-5"> {{ PrimaryEmail }} </span>
         <br />
         <span
-          v-if="isAdmin"
+          v-if="User_Type == 8"
           class="has-text-weight-medium has-text-warning is-size-5"
         >
           Admin
         </span>
       </div>
 
+
       <div class="column is-6">
         <div class="buttons is-centered">
+<!--
           <button class="button is-link" @click="isViewingUser = true">
             <span class="icon is-small">
               <i class="fas fa-eye"></i>
             </span>
             <span>View User</span>
           </button>
+-->
 
           <button class="button is-link" @click="isEditingUser = true">
             <span class="icon is-small">
@@ -43,11 +50,12 @@
     </div>
 
     <!-- Modal Windows -->
-    <div class="modal" :class="{ 'is-active': isViewingUser }">
+<!--    
+  <div class="modal" :class="{ 'is-active': isViewingUser }">
       <div class="modal-background" @click="isViewingUser = false"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Viewing {{ username }}</p>
+          <p class="modal-card-title">Viewing {{ FirstName }}</p>
           <button
             class="delete"
             aria-label="close"
@@ -62,12 +70,13 @@
         </footer>
       </div>
     </div>
+-->
 
     <div class="modal" :class="{ 'is-active': isEditingUser }">
       <div class="modal-background" @click="isEditingUser = false"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Editing {{ username }}</p>
+          <p class="modal-card-title">Editing {{ FirstName }}</p>
           <button
             class="delete"
             aria-label="close"
@@ -88,7 +97,7 @@
       <div class="modal-background" @click="isDeletingUser = false"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Deleting {{ username }}</p>
+          <p class="modal-card-title">Deleting {{ FirstName }}</p>
           <button
             class="delete"
             aria-label="close"
@@ -108,25 +117,28 @@
 </template>
 
 <script>
-import AdminUserView from "@/components/admin/AdminUserView";
+// import AdminUserView from "@/components/admin/AdminUserView";
 import AdminUserEdit from "@/components/admin/AdminUserEdit";
 import AdminUserDelete from "@/components/admin/AdminUserDelete";
 
 export default {
   data: () => ({
-    isViewingUser: false,
+    // isViewingUser: false,
     isEditingUser: false,
     isDeletingUser: false,
   }),
   components: {
-    AdminUserView,
+    // AdminUserView,
     AdminUserEdit,
     AdminUserDelete,
   },
   props: {
-    username: Object,
-    isAdmin: Boolean,
-    workouts: Object,
+    id: Number,
+    FirstName: String,
+    LastName: String,
+    DOB: String,
+    PrimaryEmail: String,
+    User_Type: Number
   },
 };
 </script>

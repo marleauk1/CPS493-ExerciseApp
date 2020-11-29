@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="field">
-      <label class="label">Change User Name</label>
+      <label class="label">Change First Name</label>
       <div class="control has-icons-left has-icons-right">
         <input
           class="input is-danger"
           type="text"
-          placeholder="Enter user name"
+          placeholder="First Name"
         />
         <span class="icon is-small is-left">
           <i class="fas fa-user-edit"></i>
@@ -18,7 +18,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    id: Number,
+    FirstName: String,
+    LastName: String,
+    DOB: String,
+    PrimaryEmail: String,
+    User_Type: Number
+  }
+};
 </script>
 
 <style>
