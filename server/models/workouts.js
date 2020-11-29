@@ -8,7 +8,7 @@ const Privacy_Levels = { HIDDEN: 0, ONLY_ME: 1, ONLY_FRIENDS: 2, PUBLIC: 4 };
 
 async function getAll(){
     console.log("Called Get All")
-    const sql = `SELECT * FROM Exercise_Types`;
+    const sql = `SELECT * FROM Workouts`;
     return await mysql.query(sql);
 }
 

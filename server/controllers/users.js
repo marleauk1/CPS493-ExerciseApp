@@ -26,6 +26,7 @@ router
         .then(x => res.send( x ) )
         .catch(next);
     })
+    
     .post('/', (req, res, next) => {
         users.add(
             req.body.FirstName, 
@@ -54,6 +55,7 @@ router
         .then(msg => { res.send( msg ); })
         .catch(next);
     })
+
     .post('/register', (req, res, next) => {
         users.register(
             req.body.FirstName, 
@@ -76,4 +78,8 @@ router
             res.send( { ...newUser, Password: undefined } ); })
         .catch(next);
     })
+
+    // Followers Routes
+    
+
 module.exports = router;
