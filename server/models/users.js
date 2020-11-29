@@ -3,11 +3,9 @@ const mysql = require('./mysql');
 const cm = require('./ContactMethods');
 
 const SALT_ROUNDS = process.env.SALT_ROUNDS || 8;
-const Types = { ADMIN: 5, USER: 6 };
+const Types = { ADMIN: 8, USER: 9 };
 
 async function getAll(){
-    // throw { status: 501, message: "This is a fake error" }
-    // await Promise.resolve()
     console.log("Called getAll")
     return await mysql.query(`SELECT * FROM Users`);
 }

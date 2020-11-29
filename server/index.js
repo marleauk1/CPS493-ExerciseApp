@@ -3,6 +3,8 @@ const path = require('path');
 require('dotenv').config();
 
 const users = require('./controllers/users');
+const exerciseTypes = require('./controllers/ExerciseTypes')
+const workouts = require('./controllers/workouts');
 
 // Middleware
 const app = express()
@@ -33,6 +35,8 @@ app.get('/', (req, res) => {
 })
 
 app.use('/users', users);
+app.use('/workouts', workouts);
+app.use('/exerciseTypes', exerciseTypes);
 
 app.use((err, req, res, next) => {
   console.log(err);
