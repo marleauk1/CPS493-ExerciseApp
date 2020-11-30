@@ -13,7 +13,7 @@ const app = express()
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '/../static')))
+app.use(express.static(path.join(__dirname, '/../docs')))
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
