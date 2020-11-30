@@ -42,6 +42,12 @@ app.use('/exerciseTypes', exerciseTypes);
 app.use('/comments', comments);
 app.use('/reactions', reactions);
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/../docs/index.html'));
+})
+
+
+
 app.use((err, req, res, next) => {
   console.log(err);
   res.status(err.status || 500).send({ message: err.message })
