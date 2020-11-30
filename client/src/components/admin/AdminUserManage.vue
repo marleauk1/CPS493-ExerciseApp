@@ -13,12 +13,7 @@
       v-for="(x, i) in list"
       :key="i"
       :user="x"
-      v-bind:id="x.id"
-      v-bind:FirstName="x.FirstName"
-      v-bind:LastName="x.LastName"
-      v-bind:DOB="x.DOB"
-      v-bind:PrimaryEmail="x.PrimaryEmail"
-      v-bind:User_Type="x.User_Type"
+      v-bind:userData="x"
     />
 
     <!-- Add User Modal -->
@@ -37,8 +32,7 @@
           <AdminUserAdd />
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success">Add User</button>
-          <button class="button" @click="isAddingUser = false">Cancel</button>
+          <button class="button" @click="isAddingUser = false">Close</button>
         </footer>
       </div>
     </div>
@@ -49,15 +43,15 @@
 import AdminUserCard from "@/components/admin/AdminUserCard.vue";
 import AdminUserAdd from "@/components/admin/AdminUserAdd.vue";
 
-import { getList } from "@/models/users.js"
+import { getList } from "@/models/users.js";
 
 export default {
   data: () => ({
     isAddingUser: false,
-    list: []
+    list: [],
   }),
-  async created(){
-      this.list = await getList(); 
+  async created() {
+    this.list = await getList();
   },
   components: {
     AdminUserCard,

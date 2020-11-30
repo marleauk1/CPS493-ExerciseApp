@@ -2,12 +2,11 @@
   <div class="box has-background-dark has-text-white">
     <div class="columns is-centered">
       <div class="column is-3">
-        <span class="has-text-weight-medium is-size-5">{{ id }}</span> <br />
-        <span class="has-text-weight-medium is-size-5">{{ FirstName }}</span> <br />
-        <span class="has-text-weight-medium is-size-5"> {{ LastName }} </span> <br />
-        <span class="has-text-weight-medium is-size-5"> {{ DOB }} </span> <br />
-        <span class="has-text-weight-medium is-size-5"> {{ PrimaryEmail }} </span>
-        <br />
+        <span class="has-text-weight-medium is-size-5">{{ userData.id }}</span> <br />
+        <span class="has-text-weight-medium is-size-5">{{ userData.FirstName }}</span> <br />
+        <span class="has-text-weight-medium is-size-5"> {{ userData.LastName }} </span> <br />
+        <span class="has-text-weight-medium is-size-5"> {{ userData.DOB }} </span> <br />
+        <span class="has-text-weight-medium is-size-5"> {{ userData.PrimaryEmail }} </span> <br />
         <span
           v-if="User_Type == 8"
           class="has-text-weight-medium has-text-warning is-size-5"
@@ -16,10 +15,9 @@
         </span>
       </div>
 
-
       <div class="column is-6">
         <div class="buttons is-centered">
-<!--
+          <!--
           <button class="button is-link" @click="isViewingUser = true">
             <span class="icon is-small">
               <i class="fas fa-eye"></i>
@@ -50,7 +48,7 @@
     </div>
 
     <!-- Modal Windows -->
-<!--    
+    <!--    
   <div class="modal" :class="{ 'is-active': isViewingUser }">
       <div class="modal-background" @click="isViewingUser = false"></div>
       <div class="modal-card">
@@ -84,10 +82,9 @@
           ></button>
         </header>
         <section class="modal-card-body">
-          <AdminUserEdit />
+          <AdminUserEdit v-bind:userData="userData" />
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success">Save Changes</button>
           <button class="button" @click="isEditingUser = false">Cancel</button>
         </footer>
       </div>
@@ -105,10 +102,9 @@
           ></button>
         </header>
         <section class="modal-card-body">
-          <AdminUserDelete />
+          <AdminUserDelete v-bind:id="userData.id" />
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-danger">Delete User</button>
           <button class="button" @click="isDeletingUser = false">Cancel</button>
         </footer>
       </div>
@@ -133,12 +129,14 @@ export default {
     AdminUserDelete,
   },
   props: {
-    id: Number,
-    FirstName: String,
-    LastName: String,
-    DOB: String,
-    PrimaryEmail: String,
-    User_Type: Number
+    userData: {
+      id: Number,
+      FirstName: String,
+      LastName: String,
+      DOB: String,
+      PrimaryEmail: String,
+      User_Type: Number,
+    },
   },
 };
 </script>

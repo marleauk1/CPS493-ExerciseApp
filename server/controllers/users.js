@@ -51,6 +51,7 @@ router
         .catch(next);
     })
     .delete('/:id', (req, res, next) => {
+        console.log("Called delete");
         users.remove( req.params.id )
         .then(msg => { res.send( msg ); })
         .catch(next);
@@ -62,8 +63,8 @@ router
             req.body.LastName,
             req.body.DOB,
             req.body.Password,
-            users.Types.USER,
-            req.body.Email,
+            req.body.User_Type,
+            req.body.PrimaryEmail,
         )
         .then(newUser => { 
             res.send( { ...newUser, Password: undefined } ); })
