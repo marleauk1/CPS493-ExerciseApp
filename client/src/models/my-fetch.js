@@ -29,8 +29,8 @@ export function myPut(url, data) {
         .then(x => x.json())
 }
 
-export function myDel(url, param) {
-    return fetch(API_ROOT + url + param, {
+export function myDel(url) {
+    return fetch(API_ROOT + url, {
         method: 'DELETE',
     })
         .then(x => x.json())
