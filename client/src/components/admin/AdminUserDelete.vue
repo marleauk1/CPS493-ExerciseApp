@@ -26,7 +26,7 @@ export default {
   methods: {
     async deleteUser() {
       // if (this.confirmDelete == "delete") {
-      const response = await deleteUser(7);
+      const response = await deleteUser(this.id);
       return response;
       // }
     },
